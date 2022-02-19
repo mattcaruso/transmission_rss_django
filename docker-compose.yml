@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  django:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+      - media:/volume1/media
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=
+      - DATABASE_PATH=
+      - TRANSMISSION_ADDRESS=
+      - TRANSMISSION_PORT=9091
+      - DOWNLOAD_PATH=
+  djangoq:
+    build: .
+    command: python manage.py qcluster
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - django

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if feed %} {{ feed.title }} {% else %} New feed {% endif %}</title>
+</head>
+<body>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'rss/style.css' %}">
+<h2>{% if feed %} {{ feed }} {% else %} Add new feed {% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+<p><a href="{% url 'index' %}">< Back</a></p>
+</body>
+</html>

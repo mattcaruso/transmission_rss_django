@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RSS Downloader</title>
+</head>
+<body>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'rss/style.css' %}">
+<div id="index-container">
+    <h1>All RSS Feeds</h1>
+    {% if all_feeds %}
+        <table>
+            <tr>
+                <th style="width:300px">Title</th>
+                <th style="width:200px">Last Checked</th>
+            </tr>
+            {% for feed in all_feeds %}
+            <tr>
+                <td><a href="{% url 'detail' feed.id %}">{{ feed.title }}</a></td>
+                <td>{{ feed.last_checked }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <p>No feeds are available.</p>
+    {% endif %}
+    <button onclick="window.location.href='{% url 'create' %}';">+ New</button>
+</div>
+</body>
+</html>
