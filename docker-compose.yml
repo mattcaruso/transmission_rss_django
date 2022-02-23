@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/code
       - /volume1/media:/media
-      - /volume1/docker/rss-django:/data
+      - /volume1/docker/rss-django:/db
     ports:
       - "8100:8100"
   djangoq:
