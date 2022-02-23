@@ -10,12 +10,6 @@ services:
       - /volume1/docker/rss-django:/data
     ports:
       - "8000:8000"
-    environment:
-      - SECRET_KEY=
-      - DATABASE_PATH=
-      - TRANSMISSION_ADDRESS=
-      - TRANSMISSION_PORT=9091
-      - DOWNLOAD_PATH=
   djangoq:
     build: .
     command: python manage.py qcluster
